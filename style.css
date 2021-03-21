@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 100%;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(165, 92, 233);
+  min-height: 100vh;
+
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.589);
+}
+.container {
+  max-width: 1000px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 1rem 7rem;
+  padding-bottom: 4rem;
+  margin-bottom: 4rem;
+  position: relative;
+}
+.container_slider {
+  width: 100%;
+  position: relative;
+  height: 350px;
+  display: flex;
+}
+button {
+  background-color: transparent;
+  color: white;
+  border: 3px white solid;
+  display: inline-block;
+  width: 3.5rem;
+  height: 3.5rem;
+  position: absolute;
+  top: 55%;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: 0.2s all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button:hover {
+  background-color: rgb(255, 255, 255);
+  color: #333;
+  transform: translateX(2px);
+}
+button.prev {
+  left: 3rem;
+  z-index: 3;
+}
+button.prev:hover {
+  transform: translateX(-2px);
+}
+button.next {
+  right: 3rem;
+  z-index: 3;
+}
+article {
+  z-index: 2;
+  width: 100%;
+
+  position: absolute;
+  border-radius: 15px;
+  background: linear-gradient(to top, rgb(29, 82, 143), rgb(45, 134, 236))
+    no-repeat center center/cover;
+  padding: 1rem;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.589);
+}
+article img {
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.589);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  margin-bottom: 2rem;
+  width: 150px;
+  height: 150px;
+  border: 5px solid rgb(45, 134, 236);
+}
+h1 {
+  color: white;
+  margin-bottom: 6rem;
+  font-size: 2.3rem;
+}
+h2 {
+  padding-top: 4.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 2.3rem;
+  color: white;
+}
+h3 {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.521);
+  font-weight: 400;
+}
+p {
+  font-size: 1.1rem;
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+}
+.bullets {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.568);
+}
+.desc {
+  width: 90%;
+  margin: 2rem auto;
+
+  position: relative;
+}
+.quote {
+  /* filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.993)); */
+  font-size: 3rem;
+  color: rgba(51, 51, 51, 0.295);
+  position: absolute;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0);
+
+  right: -2rem;
+  width: 3rem;
+  display: inline-block;
+  top: -4rem;
+}
+.quote.last {
+  left: -2rem;
+  top: 4rem;
+  width: 3rem;
+}
+
+span {
+  display: inline-block;
+  margin: 0.4rem;
+  border-radius: 50%;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.589);
+}
+.active-bullet {
+  font-size: 1.1rem;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+ul {
+  list-style: none;
+  font-size: 2rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  display: flex;
+  height: 2rem;
+}
+ul.start {
+  list-style: none;
+
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  display: flex;
+}
+ul li a {
+  text-decoration: none;
+  color: rgb(231, 231, 231);
+  margin: 0 0.6rem;
+  cursor: pointer;
+  display: inline-block;
+  transform: scale(1);
+  transition: 0.4s all cubic-bezier(0.25, 0.46, 0.45, 1.4);
+}
+ul a:hover {
+  opacity: 0.7;
+  transform: scale(1.2) rotate(360deg);
+}
+ul.start > * {
+  color: rgb(248, 204, 7);
+  margin: 0.3rem;
+  z-index: 2;
+}
+.timeMoveBar {
+  position: relative;
+  display: none;
+  width: 90%;
+  height: 3px;
+  margin: 0 2rem;
+  transform-origin: left;
+  background-color: rgb(255, 255, 255);
+  border-radius: 100em;
+  animation: barMov 10s linear forwards infinite;
+  box-shadow: 0 1px 1px rgba(250, 246, 5, 0.489),
+    0 -1px 1px rgba(250, 246, 5, 0.489), 0 2px 7px rgba(250, 246, 5, 0.289),
+    0 -2px 7px rgba(250, 246, 5, 0.289);
+}
+.activeBar {
+  display: block;
+}
+
+@keyframes barMov {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(100%);
+  }
+}
+
+@media (max-width: 550px) {
+  ul {
+    flex-direction: column;
+    right: 0rem;
+    bottom: 10rem;
+    margin-bottom: 2rem;
+  }
+  ul.start {
+    flex-direction: column;
+    left: -17rem;
+  }
+  ul li {
+    margin-top: 1rem;
+  }
+  html {
+    font-size: 80%;
+  }
+  .container {
+    padding: 2rem;
+    margin: 1rem;
+  }
+  article img {
+    width: 100px;
+    height: 100px;
+  }
+  button {
+    top: 100%;
+  }
+  .timeMoveBar {
+    top: 7rem;
+    left: -10%;
+    width: 110%;
+  }
+}
